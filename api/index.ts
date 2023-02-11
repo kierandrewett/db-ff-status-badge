@@ -3,12 +3,15 @@ import axios from "axios";
 
 const badge = (res: any, text: string, colour: string) => {
     const params = new URLSearchParams({
-        style: "plastic"
+        label: "upstream",
+        message: text,
+        color: colour,
+        style: "flat"
     });
 
-    const path = `/badge/upstream-${text}-${colour}`
+    const path = `/static/v1`
 
-    const url = new URL(path + "?" + params.toString(), "https://shields.io");
+    const url = new URL(path + "?" + params.toString(), "https://img.shields.io");
 
     axios.get(url.href)
         .then(r => {
@@ -45,6 +48,6 @@ export default async function (req: VercelRequest, res: VercelResponse) {
     } else if (minorsBehind >= 1) {
         return badge(res, `${minorsBehind} minor versions behind (dothq:${dotFFVersion} --> mozilla:${mozFFVersion})`, "yellow");
     } else {
-        return badge(res, `0 versions behind`, "lime");
+        return badge(res, `0 versions behind`, "#238636");
     }
 }
