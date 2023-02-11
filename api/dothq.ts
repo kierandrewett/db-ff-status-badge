@@ -5,5 +5,5 @@ import { getDotFFVersion } from "../src/versions";
 export default async function (req: VercelRequest, res: VercelResponse) {
     const dotFFVersion = await getDotFFVersion();
 
-    return badge(res, "dothq/gecko-dev", dotFFVersion, "#000000");
+    return badge(res, "dothq", dotFFVersion, "#000000");
 }

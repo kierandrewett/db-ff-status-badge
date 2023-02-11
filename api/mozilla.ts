@@ -5,5 +5,5 @@ import { getMozFFVersion } from "../src/versions";
 export default async function (req: VercelRequest, res: VercelResponse) {
     const mozFFVersion = await getMozFFVersion();
 
-    return badge(res, "mozilla/gecko-dev", mozFFVersion, "#FF7139")
+    return badge(res, "mozilla", mozFFVersion, "#ff493c")
 }
