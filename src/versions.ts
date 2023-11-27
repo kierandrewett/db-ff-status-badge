@@ -7,10 +7,10 @@ export const getMozFFVersion = async () => {
     return versionsMoz.LATEST_FIREFOX_VERSION;
 }
 
-export const getMozFFVersionString = async () => {
+export const getNextPullDate = async () => {
     const { data: versionsMoz } = await axios.get(`https://product-details.mozilla.org/1.0/firefox_versions.json`);
 
-    return `${versionsMoz.LATEST_FIREFOX_VERSION} (Next pull: ${sAgo(new Date(versionsMoz.NEXT_RELEASE_DATE as any)).replace("in ", "")})`;
+    return versionsMoz.NEXT_RELEASE_DATE;
 }
 
 export const getDotFFVersion = async () => {
