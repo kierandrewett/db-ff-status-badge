@@ -4,6 +4,12 @@ import sAgo from "s-ago";
 export const getMozFFVersion = async () => {
     const { data: versionsMoz } = await axios.get(`https://product-details.mozilla.org/1.0/firefox_versions.json`);
 
+    return versionsMoz.LATEST_FIREFOX_VERSION;
+}
+
+export const getMozFFVersionString = async () => {
+    const { data: versionsMoz } = await axios.get(`https://product-details.mozilla.org/1.0/firefox_versions.json`);
+
     return `${versionsMoz.LATEST_FIREFOX_VERSION} (Next pull: ${sAgo(new Date(versionsMoz.NEXT_RELEASE_DATE as any)).replace("in ", "")})`;
 }
 
