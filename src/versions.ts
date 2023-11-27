@@ -16,7 +16,7 @@ export const getDotFFVersion = async () => {
 
     const repoSmall = repo.split("github.com/")[1].replace(".git", "");
 
-    const { data: versionDotRaw } = await axios.get(`https://raw.githubusercontent.com/${repoSmall}/${branch}/browser/config/version.txt`, { responseType: "text" });
+    const { data: versionDotRaw } = await axios.get(`https://raw.githubusercontent.com/${repoSmall}/${revision}/browser/config/version.txt`, { responseType: "text" });
     const dotFFVersion = versionDotRaw.trim();
 
     return dotFFVersion;
