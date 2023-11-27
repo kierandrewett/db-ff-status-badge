@@ -1,10 +1,10 @@
 import axios from "axios";
+import sAgo from "s-ago";
 
 export const getMozFFVersion = async () => {
-    const { data: versionMozRaw } = await axios.get(`https://raw.githubusercontent.com/mozilla/gecko-dev/release/browser/config/version.txt`, { responseType: "text" });
-    const mozFFVersion = versionMozRaw.trim();
+    const { data: versionsMoz } = await axios.get(`https://product-details.mozilla.org/1.0/firefox_versions.json`);
 
-    return mozFFVersion;
+    return `${versionsMoz.LATEST_FIREFOX_VERSION} (Next pull: ${sAgo(new Date(versionsMoz.NEXT_RELEASE_DATE as any)).replace("in ", "")})`;
 }
 
 export const getDotFFVersion = async () => {
