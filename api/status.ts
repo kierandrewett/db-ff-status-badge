@@ -22,6 +22,6 @@ export default async function (req: VercelRequest, res: VercelResponse) {
     } else if (minorsBehind >= 1) {
         return badge(res, "upstream", `${minorsBehind} minor version${plural(majorsBehind > 1)} behind`, "yellow");
     } else {
-        return badge(res, "upstream", `0 versions behind`, "#238636");
+        return badge(res, "upstream", `${majorsBehind < 0 ? majorsBehind * -1 : majorsBehind} versions ${majorsBehind < 0 ? "ahead" : "behind"}`, "#238636");
     }
 }
